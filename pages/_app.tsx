@@ -1,3 +1,5 @@
+import Footer from '#/components/Footer'
+import '#/styles.scss'
 import { AppProps } from 'next/app'
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-tomorrow.css'
@@ -16,6 +18,8 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
     <QueryClientProvider client={queryClient}>
       <GlobalStyles />
       <Component {...pageProps} />
+
+      {(Component as any).footer && <Footer />}
     </QueryClientProvider>
   )
 }

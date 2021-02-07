@@ -14,16 +14,10 @@ const PageLink: FC<PageLinkProps> = ({
   ...props
 }) => {
   const pageId = parsePageId(href as string, { uuid: true })
-  console.log(
-    '🚀 ~ file: PageLink.tsx ~ line 16 ~ recordMap',
-    recordMap,
-    pageId,
-    recordMap?.block[pageId]
-  )
-  const baba = recordMap ? getCanonicalPageId(pageId, recordMap) : ''
+  const canonical = recordMap ? getCanonicalPageId(pageId, recordMap) : ''
   return (
     <Link
-      href={`/blog/${baba}`}
+      href={`/blog/${canonical}`}
       // @ts-expect-error because it shouldn't
       as={as}
       {...props}

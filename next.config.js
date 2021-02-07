@@ -19,6 +19,15 @@ const plugins = [[bundleAnalyzer({})], pwa]
 
 module.exports = withPlugins(plugins, {
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: '/blog',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
   webpack: (config, { isServer }) => {
     // Fixes packages that depend on fs/module module
     if (!isServer) {
