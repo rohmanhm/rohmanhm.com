@@ -3,7 +3,7 @@ import 'twin.macro'
 
 const Footer = () => {
   return (
-    <div tw="p-6 bg-black text-white text-center h-80">
+    <div tw="relative p-6 bg-black text-white text-center h-80">
       <span tw="text-xl">Jangan lupa follow</span>
 
       <div

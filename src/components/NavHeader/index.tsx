@@ -4,7 +4,7 @@ import 'twin.macro'
 
 const NavHeader = () => {
   return (
-    <header tw="text-gray-600">
+    <header tw="text-gray-600 z-10 relative">
       <div tw="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link href="/" passHref={true}>
           <a tw="flex font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
