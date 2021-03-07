@@ -7,7 +7,6 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document'
-import React from 'react'
 
 export default class MyDocument extends Document<EmotionCritical> {
   static async getInitialProps(ctx: DocumentContext) {

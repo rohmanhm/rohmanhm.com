@@ -1,5 +1,4 @@
 {
-  "files": ["types/twin.d.ts"],
   "compilerOptions": {
     "allowJs": true,
     "alwaysStrict": true,
@@ -20,8 +19,7 @@
     "target": "esnext",
     "baseUrl": ".",
     "paths": {
-      "#/*": ["./src/*"],
-      "~/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules"],

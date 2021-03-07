@@ -1,10 +1,10 @@
+import { Box } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { ExtendedRecordMap } from 'notion-types'
 import { getPageTitle } from 'notion-utils'
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Collection, CollectionRow, NotionRenderer } from 'react-notion-x'
-import tw from 'twin.macro'
 import PageLink from './PageLink'
 
 const Code = dynamic(
@@ -23,11 +23,7 @@ const NotionPage: FC<Props> = ({
   autoTitle = true,
 }) => {
   if (loading) {
-    return (
-      <div css={[tw`flex h-screen items-center justify-center`]}>
-        Loading ...
-      </div>
-    )
+    return <Box>Loading ...</Box>
   }
 
   if (!recordMap) {
