@@ -1,5 +1,5 @@
 import '@/styles.scss'
-import theme from '@/theme'
+import customTheme from '@/theme'
 import { ChakraProvider } from '@chakra-ui/react'
 import { AppProps } from 'next/app'
 // used for code syntax highlighting (optional)
@@ -15,7 +15,7 @@ const queryClient = new QueryClient()
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={customTheme}>
       <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
       </QueryClientProvider>

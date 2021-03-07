@@ -6,7 +6,7 @@ import { FC } from 'react'
 export type PageLinkProps = LinkProps & {
   recordMap?: ExtendedRecordMap
 }
-const PageLink: FC<PageLinkProps> = ({
+const NotionPageLink: FC<PageLinkProps> = ({
   children,
   as,
   href,
@@ -22,6 +22,6 @@ const PageLink: FC<PageLinkProps> = ({
   )
 }
 
-PageLink.displayName = 'NotionPageLink'
+NotionPageLink.displayName = 'NotionPageLink'
 
-export default PageLink
+export default NotionPageLink

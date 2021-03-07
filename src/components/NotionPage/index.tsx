@@ -1,11 +1,11 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Heading, useColorMode } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { ExtendedRecordMap } from 'notion-types'
 import { getPageTitle } from 'notion-utils'
 import { FC } from 'react'
-import { Collection, CollectionRow, NotionRenderer } from 'react-notion-x'
-import PageLink from './PageLink'
+import { Collection, NotionRenderer } from 'react-notion-x'
+import NotionPageLink from './NotionPage.Link'
 
 const Code = dynamic(
   // @ts-expect-error idk
@@ -22,6 +22,8 @@ const NotionPage: FC<Props> = ({
   loading = false,
   autoTitle = true,
 }) => {
+  const { colorMode } = useColorMode()
+
   if (loading) {
     return <Box>Loading ...</Box>
   }
@@ -42,14 +44,20 @@ const NotionPage: FC<Props> = ({
         recordMap={recordMap}
         components={{
           collection: Collection,
-          collectionRow: CollectionRow,
+          collectionRow: () => {
+            return (
+              <Box mb={5}>
+                <Heading as="h1">{title}</Heading>
+              </Box>
+            )
+          },
           pageLink: (props: any) => (
-            <PageLink recordMap={recordMap} {...props} />
+            <NotionPageLink recordMap={recordMap} {...props} />
           ),
           code: Code,
         }}
         fullPage={false}
-        darkMode={false}
+        darkMode={colorMode === 'dark'}
       />
     </>
   )
