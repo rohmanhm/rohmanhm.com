@@ -1,7 +1,7 @@
 import useNotionPageQuery from '@/hooks/useNotionPageQuery'
 import Container from 'components/Container/Container'
 import HeaderNav from 'components/Header/Header.Nav'
-import NotionPage from 'components/NotionPage'
+import NotionPage from 'components/NotionPage/NotionPage'
 import { useRouter } from 'next/router'
 
 const BlogPostPage = () => {

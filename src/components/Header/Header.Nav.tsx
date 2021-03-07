@@ -21,7 +21,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import Container from 'components/Container/Container'
-import MotionBox from 'components/MotionBox'
+import MotionBox from 'components/MotionBox/MotionBox'
 import NextLink from 'next/link'
 import { FC, useRef } from 'react'
 import { FiMenu, FiSearch, FiX } from 'react-icons/fi'
