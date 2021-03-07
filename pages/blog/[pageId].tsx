@@ -1,27 +1,42 @@
-import useNotionPageQuery from '@/hooks/useNotionPageQuery'
 import Container from 'components/Container/Container'
 import HeaderNav from 'components/Header/Header.Nav'
 import NotionPage from 'components/NotionPage/NotionPage'
+import SkeletonBlogPost from 'components/Skeleton/Skeleton.BlogPost'
+import { BLOG_PAGE_ID } from 'configs/constants'
+import { getPage } from 'libs/notion'
+import { GetStaticPropsContext, NextPage } from 'next'
 import { useRouter } from 'next/router'
+import { getPageContentBlockIds } from 'notion-utils'
 
-const BlogPostPage = () => {
-  const router = useRouter()
-  const { data, isLoading } = useNotionPageQuery({
-    pageId: router.query.pageId as string,
-  })
+const BlogPostPage: NextPage<{ recordMap: any }> = ({ recordMap }) => {
+  const { isFallback } = useRouter()
 
-  // const title = data ? getPageTitle(data) : ''
   return (
     <>
       <HeaderNav />
 
       <Container flexDirection="column" p={4}>
-        <NotionPage recordMap={data} loading={isLoading} />
+        {isFallback && <SkeletonBlogPost />}
+
+        <NotionPage recordMap={recordMap} />
       </Container>
     </>
   )
 }
 
-BlogPostPage.footer = true
+export async function getStaticProps(ctx: GetStaticPropsContext) {
+  const id = ctx?.params?.pageId as string
+  console.log('building page: ', id)
+  const recordMap = await getPage(id)
+  return { props: { recordMap }, revalidate: 10 }
+}
+
+export async function getStaticPaths() {
+  const recordMap = await getPage(BLOG_PAGE_ID)
+  const paths = getPageContentBlockIds(recordMap)?.map((id) => ({
+    params: { pageId: id },
+  }))
+  return { paths, fallback: true }
+}
 
 export default BlogPostPage

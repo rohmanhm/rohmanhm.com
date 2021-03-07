@@ -20,8 +20,8 @@
     "baseUrl": ".",
     "paths": {
       "components/*": ["./src/components/*"],
-      "types/*": ["./types/*"],
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "*": ["./*"]
     }
   },
   "exclude": ["node_modules"],

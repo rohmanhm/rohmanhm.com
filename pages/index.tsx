@@ -1,13 +1,12 @@
-import useNotionPageQuery from '@/hooks/useNotionPageQuery'
 import Container from 'components/Container/Container'
 import HeaderNav from 'components/Header/Header.Nav'
 import NotionPage from 'components/NotionPage/NotionPage'
+import { BLOG_PAGE_ID } from 'configs/constants'
+import { getPage } from 'libs/notion'
+import { NextPage } from 'next'
 import Head from 'next/head'
 
-const rootPageId = '9b2e142bd33f4774960e015282ec07e6'
-
-const IndexPage = () => {
-  const { data, isLoading } = useNotionPageQuery({ pageId: rootPageId })
+const IndexPage: NextPage<{ recordMap: any }> = ({ recordMap }) => {
   return (
     <>
       <HeaderNav />
@@ -15,12 +14,17 @@ const IndexPage = () => {
         <title>Rohman HM</title>
       </Head>
       <Container id="home-page" position="relative">
-        <NotionPage autoTitle={false} recordMap={data} loading={isLoading} />
+        <NotionPage autoTitle={false} recordMap={recordMap} />
       </Container>
     </>
   )
 }
 
-IndexPage.footer = true
+export async function getStaticProps() {
+  const id = BLOG_PAGE_ID
+  console.log('building page: ', id)
+  const recordMap = await getPage(id)
+  return { props: { recordMap }, revalidate: 10 }
+}
 
 export default IndexPage
