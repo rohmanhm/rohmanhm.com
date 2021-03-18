@@ -12,7 +12,7 @@
 }
 
 .notion-code {
-  background-color: #333 !important;
+  background-color: #000 !important;
   border-radius: 5px !important;
 }
 
@@ -22,6 +22,12 @@
   white-space: normal !important;
 }
 
-.notion-page-icon {
+.notion-page-icon,
+.notion-collection-header {
   display: none !important;
+}
+
+.notion-gallery-grid,
+.notion-collection-card-cover {
+  border: 0 !important;
 }

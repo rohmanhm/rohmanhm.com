@@ -1,5 +1,5 @@
+import SkeletonBlogPost from '@/components/Skeleton/Skeleton.BlogPost'
 import { Box, Heading, useColorMode } from '@chakra-ui/react'
-import SkeletonBlogPost from 'components/Skeleton/Skeleton.BlogPost'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { ExtendedRecordMap } from 'notion-types'

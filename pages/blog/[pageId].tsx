@@ -1,9 +1,9 @@
-import Container from 'components/Container/Container'
-import HeaderNav from 'components/Header/Header.Nav'
-import NotionPage from 'components/NotionPage/NotionPage'
-import SkeletonBlogPost from 'components/Skeleton/Skeleton.BlogPost'
-import { BLOG_PAGE_ID } from 'configs/constants'
-import { getPage } from 'libs/notion'
+import Container from '@/components/Container/Container'
+import HeaderNav from '@/components/Header/Header.Nav'
+import NotionPage from '@/components/NotionPage/NotionPage'
+import SkeletonBlogPost from '@/components/Skeleton/Skeleton.BlogPost'
+import { BLOG_PAGE_ID, DEFAULT_REVALIDATE } from '@/configs/constants'
+import { getPage } from '@/libs/notion'
 import { GetStaticPropsContext, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { getPageContentBlockIds } from 'notion-utils'
@@ -28,7 +28,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
   const id = ctx?.params?.pageId as string
   console.log('building page: ', id)
   const recordMap = await getPage(id)
-  return { props: { recordMap }, revalidate: 10 }
+  return { props: { recordMap }, revalidate: DEFAULT_REVALIDATE }
 }
 
 export async function getStaticPaths() {

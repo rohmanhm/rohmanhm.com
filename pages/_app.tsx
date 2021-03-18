@@ -1,9 +1,9 @@
-import '@/styles.scss'
+// used for code syntax highlighting (optional)
+import '@/app/code-theme.css'
+import '@/app/styles.scss'
 import customTheme from '@/theme'
 import { ChakraProvider } from '@chakra-ui/react'
 import { AppProps } from 'next/app'
-// used for code syntax highlighting (optional)
-import 'prismjs/themes/prism-tomorrow.css'
 // used for collection views (optional)
 import 'rc-dropdown/assets/index.css'
 import { FC } from 'react'

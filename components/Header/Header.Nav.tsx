@@ -1,3 +1,5 @@
+import Container from '@/components/Container'
+import MotionBox from '@/components/MotionBox'
 import {
   Box,
   Drawer,
@@ -9,22 +11,21 @@ import {
   FlexProps,
   FormControl,
   Heading,
+  Icon,
   Input,
   InputGroup,
   InputRightElement,
   Link,
   Spacer,
-  Switch,
   Tooltip,
   useColorMode,
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react'
-import Container from 'components/Container/Container'
-import MotionBox from 'components/MotionBox/MotionBox'
 import NextLink from 'next/link'
 import { FC, useRef } from 'react'
 import { FiMenu, FiSearch, FiX } from 'react-icons/fi'
+import { HiMoon, HiSun } from 'react-icons/hi'
 
 const HeaderContainer: FC<FlexProps> = ({ children, ...props }) => (
   <Container height="100%" alignItems="center" {...props}>
@@ -41,6 +42,8 @@ const HeaderNav: FC = () => {
 
   const color = useColorModeValue('white', 'gray.900')
   const border = useColorModeValue('gray.300', 'gray.700')
+
+  const isDarkmode = colorMode.colorMode === 'dark'
 
   return (
     <>
@@ -90,21 +93,20 @@ const HeaderNav: FC = () => {
                   <Link>ROHMANHM</Link>
                 </NextLink>
               </Heading>
-              <Box>
+              <Box ml={4}>
                 <Tooltip
                   label="Toggle Dark &amp; Light Mode"
                   hasArrow
                   placement="bottom"
                 >
                   <FormControl display="flex" alignItems="center">
-                    <Switch
-                      colorScheme="primary"
-                      onChange={colorMode.toggleColorMode}
-                      isChecked={
-                        Boolean(colorMode.colorMode === 'dark') || false
-                      }
-                      ml="2"
-                      size="md"
+                    <Icon
+                      cursor="pointer"
+                      color={isDarkmode ? 'yellow.500' : 'blue.900'}
+                      as={isDarkmode ? HiSun : HiMoon}
+                      onClick={colorMode.toggleColorMode}
+                      w={7}
+                      h={7}
                     />
                   </FormControl>
                 </Tooltip>
@@ -114,7 +116,7 @@ const HeaderNav: FC = () => {
             <Flex>
               <form>
                 <InputGroup>
-                  <Input type="text" placeholder="Cari artikel..." />
+                  <Input type="text" placeholder="Search article..." disabled />
                   <InputRightElement>
                     <FiSearch />
                   </InputRightElement>
@@ -135,11 +137,8 @@ const HeaderNav: FC = () => {
               <DrawerCloseButton />
               <DrawerBody pt={HEADER_HEIGHT}>
                 <Box p={4}>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Praesentium magni fuga dolor necessitatibus eveniet, earum,
-                  quo dignissimos quos expedita soluta repellendus illum
-                  eligendi modi totam. Vero, necessitatibus soluta. Perferendis,
-                  alias?
+                  Thanks for clicking the navigation menu, but it&apos;s not
+                  implemented yet.
                 </Box>
               </DrawerBody>
             </DrawerContent>
