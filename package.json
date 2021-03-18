@@ -13,7 +13,7 @@
     "check-formatting": "prettier --list-different 'src/**/*.{ts,tsx}'",
     "commit": "git-cz",
     "clean-build": "rm -rf out .next*",
-    "gen:chakra": "chakra-cli tokens ./src/theme.ts",
+    "gen:chakra": "chakra-cli tokens ./configs/theme.ts",
     "postinstall": "npm run gen:chakra"
   },
   "dependencies": {
